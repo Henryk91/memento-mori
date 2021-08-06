@@ -8,9 +8,13 @@ Date.prototype.getWeek = function() {
 function Week(props) {
 
     const className = props.filled ? 'week-box filled tooltip': 'week-box tooltip';
+    const date = new Date(props.dateMilli).toDateString()
     return (
         <span className={className}>
-            <span className="tooltiptext">Week: {props.week}</span>
+            <span className="tooltiptext">
+                Week: {props.week} <br />
+                Date: {date}
+            </span>
         </span>
     );
 }
@@ -20,8 +24,9 @@ function Year(props) {
 
         const week = (props.count * 52 + i + 1)
         let filled = (week <= props.weeks)? true: false;
+        const date = (week * (1000 * 60 * 60 * 24 * 7)) + props.birthDayMilli
 
-        year.push(<Week name="Sara" filled={filled} key={week} week={week} />)
+        year.push(<Week name="Sara" filled={filled} key={week} week={week} dateMilli={date} />)
     }
     let count = (((props.count + 1) % 5) === 0 ) ? (props.count + 1) : null;
     return (
@@ -38,9 +43,10 @@ function weeksBetween(d1, d2) {
 
 function App() {
     let years = []
-    let weeks = weeksBetween(new Date(), new Date(1991, 11, 6));
+    const birthDay = new Date(1991, 11, 6)
+    let weeks = weeksBetween(new Date(), birthDay);
     for(let i = 0; i < 80; i++){
-        years.push(<Year count={(i )} key={i} weeks={weeks} /> )
+        years.push(<Year count={(i )} key={i} weeks={weeks} birthDayMilli={birthDay.getTime()} /> )
     }
 return (
     <div id="main">
@@ -50,6 +56,13 @@ return (
                 {years}
             </div>
         </div>
+        <br /> 
+        <span id="quote">
+            It's not that we have a short time to live, but that we waste much of it. 
+            Life is long enough, and it has been given in <br id="quote-break" /> sufficiently generous measure to allow 
+            the accomplishment of the very greatest things if the whole of it is well invested.
+        </span>
+        <span id="author">SENECA</span>
     </div>
 );
 }

@@ -21,6 +21,7 @@
     border: 20px solid;
     padding: 40px;
     padding-top: 10px;
+    padding-bottom: 0px;
 }
 #life-box{
     display: flex;
@@ -60,6 +61,12 @@
 .week-box:nth-child(26) {
     margin-right: 10px;
 }
+#author{
+    margin: 10px;
+}
+#quote-break{
+    display: unset;
+}
 @media  only screen and (max-width: 600px) {
     .week-box {
         border: 1px solid black;
@@ -79,6 +86,12 @@
         margin-left: 3px;
         font-weight: bold;
     }
+    #author{
+        margin: 5px;
+    }
+    #quote-break{
+        display: none;
+    }
 }
 
 .year:nth-child(10n+0) {
@@ -92,12 +105,12 @@
   
   .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 150px;
     background-color: black;
     color: #fff;
-    text-align: center;
+    text-align: left;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
   
     /* Position the tooltip */
     position: absolute;
@@ -107,3 +120,8 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
+
+#quote{
+    font-size: 8.5px;
+    max-width: 100%;
+}
