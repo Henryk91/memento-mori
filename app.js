@@ -27,7 +27,7 @@ function Year(props) {
         let startOfYear = new Date(props.year+props.count, props.month, props.day).getTime()
         const date = (i * (1000 * 60 * 60 * 24 * 7)) + startOfYear;
 
-        year.push(<Week name="Sara" key={week} week={week} dateMilli={date} />)
+        year.push(<Week name="Sara" key={week} week={week} dateMilli={date} woy={i} />)
     }
     let count = (((props.count + 1) % 5) === 0 ) ? (props.count + 1) : null;
     return (
