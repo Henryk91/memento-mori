@@ -8,10 +8,11 @@ Date.prototype.getWeek = function() {
 function Week(props) {
     const nowMili = new Date().getTime()
     const className = props.dateMilli <= nowMili ? 'week-box filled tooltip': 'week-box tooltip';
+    const tooltiptextClass = props.woy > 25 ? 'right tooltiptext': 'left tooltiptext';
     const date = new Date(props.dateMilli).toDateString()
     return (
         <span className={className}>
-            <span className="tooltiptext">
+            <span className={tooltiptextClass}>
                 Week: {props.week} <br />
                 Date: {date}
             </span>
